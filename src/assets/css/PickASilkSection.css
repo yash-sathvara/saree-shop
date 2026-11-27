@@ -1,0 +1,265 @@
+/* ==========================================================================
+   NOOLAM — Section 4: Pick a Silk (Color-Blocked 3D Tilt Carousel)
+   ========================================================================== */
+
+.noolam-silks-section {
+  position: relative;
+  width: 100%;
+  background: radial-gradient(circle at 50% 45%, #ffffff 0%, #f4f4f6 78%, #ebebf0 100%);
+  color: var(--noolam-ink);
+  padding: 88px 0 64px;
+  overflow: hidden;
+}
+
+.noolam-silks-header {
+  margin: 0 0 38px;
+  padding: 0 42px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.noolam-silks-title {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: clamp(2.1rem, 4vw, 3.2rem);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  color: #1c1214;
+}
+
+.noolam-silks-title-accent {
+  color: #9e1b24;
+}
+
+.noolam-silks-hint {
+  margin: 0;
+  max-width: 240px;
+  text-align: right;
+  font-size: 0.74rem;
+  line-height: 1.5;
+  color: #6b5e5d;
+}
+
+.noolam-silks-hint-plus {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  border-radius: 9999px;
+  background: #1c1214;
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  vertical-align: middle;
+}
+
+/* --- Carousel Viewport --- */
+.noolam-silks-carousel-wrap {
+  position: relative;
+  width: 100%;
+  height: 460px;
+  padding: 24px 0 36px;
+  overflow: hidden;
+}
+
+.noolam-silks-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* --- Individual Silk Card --- */
+.noolam-silk-card-slot {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  perspective: 1000px;
+  will-change: transform;
+}
+
+.noolam-silk-card-slot:hover {
+  z-index: 25 !important;
+}
+
+.noolam-silk-card {
+  position: relative;
+  width: 248px;
+  height: 356px;
+  border-radius: 22px;
+  padding: 18px 18px 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 18px 38px rgba(18, 8, 10, 0.16);
+  transform-style: preserve-3d;
+  transition: transform 0.16s ease-out, box-shadow 0.3s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.noolam-silk-card.is-poked {
+  transform: scale(0.95) !important;
+}
+
+.noolam-silk-card-sheen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--sheen-x, 50%) var(--sheen-y, 30%),
+      rgba(255, 255, 255, 0.28) 0%,
+      transparent 62%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: 4;
+}
+
+.noolam-silk-card:hover .noolam-silk-card-sheen {
+  opacity: 1;
+}
+
+/* Top Row: Giant Title + Wishlist Heart */
+.noolam-silk-card-top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.noolam-silk-card-title {
+  margin: 0;
+  font-family: 'Oswald', 'Arial Narrow', Impact, sans-serif;
+  font-size: 2.05rem;
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  word-break: break-word;
+}
+
+.noolam-silk-wish-btn {
+  position: relative;
+  z-index: 6;
+  width: 28px;
+  height: 28px;
+  border-radius: 9999px;
+  border: 1px solid currentColor;
+  background: rgba(255, 255, 255, 0.18);
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.noolam-silk-wish-btn:hover {
+  transform: scale(1.1);
+}
+
+.noolam-silk-wish-btn.is-liked {
+  background: #ffffff;
+  color: #e10d33;
+  border-color: #ffffff;
+}
+
+/* Model Cutout Overlapping Title */
+.noolam-silk-model-img {
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+  height: 78%;
+  width: auto;
+  max-width: 88%;
+  object-fit: contain;
+  object-position: bottom center;
+  z-index: 2;
+  pointer-events: none;
+  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.24));
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.noolam-silk-card:hover .noolam-silk-model-img {
+  transform: translateX(-50%) scale(1.04) translateY(-3px);
+}
+
+/* Bottom Row: Price + Add (+) Button */
+.noolam-silk-card-bottom {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.noolam-silk-price {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(4px);
+}
+
+.noolam-silk-card.is-dark-text .noolam-silk-price {
+  background: rgba(255, 255, 255, 0.38);
+}
+
+.noolam-silk-add-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 9999px;
+  border: 1.5px solid currentColor;
+  background: rgba(0, 0, 0, 0.14);
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.noolam-silk-add-btn:hover {
+  transform: scale(1.12);
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.noolam-silks-footer-label {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #8b7a78;
+}
+
+@media (max-width: 640px) {
+  .noolam-silks-section {
+    padding: 64px 0 48px;
+  }
+
+  .noolam-silks-header {
+    padding: 0 20px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .noolam-silks-hint {
+    text-align: left;
+  }
+
+  .noolam-silk-card {
+    width: 216px;
+    height: 312px;
+  }
+}
