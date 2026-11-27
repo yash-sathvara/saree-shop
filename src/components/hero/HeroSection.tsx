@@ -49,6 +49,28 @@ export function HeroSection() {
           pin: true,
           scrub: 0.85,
           anticipatePin: 1,
+          onLeave: () => {
+            if (navbarEl) {
+              gsap.to(navbarEl, {
+                opacity: 1,
+                y: 0,
+                pointerEvents: 'auto',
+                duration: 0.35,
+                ease: 'power2.out',
+              })
+            }
+          },
+          onEnterBack: () => {
+            if (navbarEl) {
+              gsap.to(navbarEl, {
+                opacity: 0,
+                y: -20,
+                pointerEvents: 'none',
+                duration: 0.25,
+                ease: 'power2.in',
+              })
+            }
+          },
         },
       })
 

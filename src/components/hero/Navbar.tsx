@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { ArrowRight, Heart, Menu, ShoppingBag, X } from 'lucide-react'
+import { useCart } from '../../context/CartContext'
 import '../../assets/css/HeroSection.css'
 
 const NAV_LINKS = [
@@ -58,6 +59,7 @@ export function LotusCrest({ className }: { className?: string }) {
 export function Navbar() {
   const [activeId, setActiveId] = useState('home')
   const [mobileOpen, setMobileOpen] = useState(false)
+  const { cartCount, cartIconRef } = useCart()
 
   const handleLinkClick = (id: string) => {
     setActiveId(id)
@@ -101,12 +103,16 @@ export function Navbar() {
             <Heart size={15} strokeWidth={1.9} />
           </button>
           <button
+            ref={cartIconRef}
             type="button"
             className="noolam-icon-btn"
-            aria-label="Shopping Bag"
+            aria-label={`Shopping Bag (${cartCount} items)`}
             title="Shopping Bag"
           >
             <ShoppingBag size={15} strokeWidth={1.9} />
+            {cartCount > 0 && (
+              <span className="noolam-cart-badge">{cartCount}</span>
+            )}
           </button>
           <a href="#visit-store" className="noolam-store-cta">
             <span>Visit the Store</span>
