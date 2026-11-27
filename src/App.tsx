@@ -1,5 +1,6 @@
 import { HeroSection } from './components/hero/HeroSection'
 import { Navbar } from './components/hero/Navbar'
+import { SixMoodsSection } from './components/moods/SixMoodsSection'
 
 export function App() {
   return (
@@ -7,6 +8,7 @@ export function App() {
       <Navbar />
       <main>
         <HeroSection />
+        <SixMoodsSection />
       </main>
     </div>
   )

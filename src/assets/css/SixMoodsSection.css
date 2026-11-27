@@ -1,0 +1,239 @@
+/* ==========================================================================
+   NOOLAM — Section 2: Six Moods. Timeless Drapes
+   ========================================================================== */
+
+.noolam-moods-section {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(180deg, #faf7f2 0%, #ffffff 50%, #faf7f2 100%);
+  color: var(--noolam-ink);
+  overflow: hidden;
+}
+
+/* --- Wavy Crimson Transition Ribbon --- */
+.noolam-moods-ribbon-wrap {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(90deg, #720e1c 0%, #a5182b 50%, #720e1c 100%);
+  color: rgba(255, 255, 255, 0.92);
+  padding: 13px 0 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(58, 11, 18, 0.16);
+}
+
+.noolam-moods-ribbon-track {
+  display: flex;
+  width: max-content;
+  animation: noolam-marquee 34s linear infinite;
+}
+
+.noolam-moods-ribbon-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+  padding-right: 22px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.noolam-moods-ribbon-diamond {
+  color: var(--noolam-gold);
+  font-size: 0.68rem;
+}
+
+.noolam-moods-ribbon-wave {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 14px;
+  pointer-events: none;
+  display: block;
+}
+
+/* --- Main Inner Container --- */
+.noolam-moods-inner {
+  width: min(1320px, 100%);
+  margin: 0 auto;
+  padding: 98px 36px;
+}
+
+/* --- Editorial Header --- */
+.noolam-moods-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 52px;
+}
+
+.noolam-moods-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #8b7a78;
+  margin-bottom: 10px;
+}
+
+.noolam-moods-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: #b5a4a1;
+}
+
+.noolam-moods-title {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: clamp(2rem, 3.8vw, 3.1rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: #1c1214;
+}
+
+.noolam-moods-title-accent {
+  background: linear-gradient(95deg, #9e1b24 0%, #c83e3b 55%, #b88428 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.noolam-moods-copy {
+  margin: 0;
+  max-width: 280px;
+  text-align: right;
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: #776866;
+}
+
+/* --- 6 Temple-Arch Grid --- */
+.noolam-moods-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+.noolam-mood-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  will-change: transform, opacity;
+}
+
+.noolam-svg-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* Arch Wrapper with Responsive Jharokha Mask + Gold Border */
+.noolam-arch-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 5 / 8;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.35s ease;
+  filter: drop-shadow(0 12px 24px rgba(38, 16, 18, 0.1));
+}
+
+.noolam-mood-card:hover .noolam-arch-frame {
+  transform: translateY(-6px);
+  filter: drop-shadow(0 18px 32px rgba(114, 14, 28, 0.18));
+}
+
+/* Responsive SVG Image Mask (objectBoundingBox) */
+.noolam-arch-mask {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #f2ebe0;
+  clip-path: url(#noolam-jharokha-clip);
+  -webkit-clip-path: url(#noolam-jharokha-clip);
+}
+
+.noolam-jharokha-border {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+  color: #b89038;
+  transition: color 0.3s ease;
+}
+
+.noolam-mood-card:hover .noolam-jharokha-border {
+  color: #9e1b24;
+}
+
+.noolam-arch-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.noolam-mood-card:hover .noolam-arch-img {
+  transform: scale(1.07);
+}
+
+.noolam-mood-label {
+  margin-top: 14px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #4b3d3b;
+  line-height: 1.35;
+  transition: color 0.25s ease;
+}
+
+.noolam-mood-card:hover .noolam-mood-label {
+  color: #9e1b24;
+}
+
+@media (max-width: 1024px) {
+  .noolam-moods-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .noolam-moods-inner {
+    padding: 48px 20px 64px;
+  }
+
+  .noolam-moods-header {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 36px;
+  }
+
+  .noolam-moods-copy {
+    text-align: left;
+    max-width: 100%;
+  }
+
+  .noolam-moods-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 14px;
+  }
+}
